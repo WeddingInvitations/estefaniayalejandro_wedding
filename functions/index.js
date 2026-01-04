@@ -66,9 +66,9 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
     });
   }
 
-  const email1 = "ainarasalazar@hotmail.com"; // Cambiar
+  const email1 = "estefaniagarciaperezdeguzman@gmail.com"; // Cambiar estefaniagarciaperezdeguzman@gmail.com
   // const email1 = "f14agui@gmail.com";
-  const email2 = "borjaausin@hotmail.com";
+  // const email2 = "alexcampillo10@gmail.com"; //alexcampillo10@gmail.com
 
   // Crear el email para Brevo
   const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
@@ -78,7 +78,7 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
   };
   sendSmtpEmail.to = [
     {email: email1, name: "Estefanía y Alejandro"},
-    {email: email2, name: "Estefanía y Alejandro"},
+   // {email: email2, name: "Estefanía y Alejandro"},
   ];
   sendSmtpEmail.subject = "Nueva asistencia registrada";
   sendSmtpEmail.htmlContent = html;

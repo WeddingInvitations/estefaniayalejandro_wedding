@@ -28,7 +28,7 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
   html += `<strong>Teléfono:</strong> ${ph}<br>`;
   html += `<strong>Alergias:</strong> ${ale}<br>`;
   html += `<strong>Canción:</strong> ${song}<br><br>`;
-  html += `<strong>Bebida:</strong> ${dri}<br>`;
+  html += `<strong>Bebida alcoholica:</strong> ${dri}<br>`;
 
   // Fallback, por si acaso se bloquea la visualizacion html
   let text = `Nombre:${nm}\n`;
@@ -42,15 +42,16 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
     text += "Acompañantes: No voy acompañado\n";
     html += "<strong>Acompañantes:</strong> No voy acompañado<br>";
   } else {
+    const edadMenor = acompanante.Edad? acompanante.Edad : "";
     html += "<strong>Acompañantes:</strong><br><ul>";
     gue.forEach((acompanante, index) => {
       html += `<li>Acompañante ${index + 1}:`;
       html += `<ul>`;
       html += `<li>Nombre: ${acompanante.Nombre}</li>`;
-      html += `<li>Tipo: ${acompanante.TipoInvitado}</li>`;
+      html += `<li>Tipo: ${acompanante.TipoInvitado} - ${edadMenor}</li>`;
       html += `<li>Alergias: ${acompanante.Alergias}</li>`;
       html += `<li>Cancion: ${acompanante.Cancion}</li>`;
-      // html += `<li>Transporte: ${acompanante.Bus}</li>`;
+      html += `<li>Bebida alcoholica: ${acompanante.Alcohol}</li>`;
       html += `</ul></li>`;
     });
     html += `</ul>`;
@@ -59,10 +60,10 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
     gue.forEach((acompanante, index) => {
       text += `--- Acompañante ${index + 1} ---\n`;
       text += `* Nombre: ${acompanante.Nombre}\n`;
-      text += `* Tipo: ${acompanante.TipoInvitado}\n`;
+      text += `* Tipo: ${acompanante.TipoInvitado} - ${edadMenor}\n`;
       text += `* Alergias: ${acompanante.Alergias}\n`;
       text += `* Cancion: ${acompanante.Cancion}\n`;
-      // text += `* Transporte: ${acompanante.Bus}\n\n`;
+      text += `* Bebida alcoholica: ${acompanante.Alcohol}\n\n`;
     });
   }
 
@@ -158,7 +159,7 @@ exports.exportarInvitados = onRequest({cors: true}, async (req, res) => {
             "Teléfono": data.Teléfono || "", // Mismo teléfono que el principal
             "Alergias": acompanante.Alergias || "Sin alergias",
             "Canción": acompanante.Cancion || "",
-            // "Transporte": data.Bus ? "SÍ" : "NO", // Mismo transporte
+            "Transporte": acompanante.Alcohol,
             "Tiene Acompañantes": "N/A",
             "Fecha Registro": data.timestamp ? new Date(data.timestamp).toLocaleDateString("es-ES") : "",
           };

@@ -132,6 +132,12 @@ function addAcompanante() {
             <label for="alergiasAcompanante"></label>
             <input type="text" id="cancionAcompanante" placeholder="¿Qué canción no puede faltar?" class="cancion">
           </div>
+          <div class="col-12 select_edad">
+            <select class="typeDrink col-sm-12 col-lg-12 mb-3" name="tipo_bebida[]" id="tipo_bebida">
+              <option value="Con">¡Vamos a ello!</option>
+              <option value="Sin">Sin alcohol, gracias</option>
+            </select>
+          </div>
           <button type="button" id="deleteAcompananteButton">Borrar Acompañante</button>
         </div>
         `;
@@ -234,6 +240,7 @@ document.getElementById('attendance-form').addEventListener("submit", function (
         Edad: acompananteElement.querySelector(".edad").value,
         Alergias: acompananteElement.querySelector(".allergies").value,
         Cancion: acompananteElement.querySelector(".cancion").value,
+        Alcohol: acompananteElement.querySelector("typeDrink").value
         // Bus: busAcomp
       };
 
@@ -289,6 +296,9 @@ document.getElementById('attendance-form').addEventListener("submit", function (
   document.getElementById("cancion").value = "";
   document.getElementById("bebidaSi").checked = "";
   document.getElementById("bebidaNo").checked = "";
+  document.getElementById("nombreAcompanante").value="";
+  document.getElementById("alergiasAcompanante").value="";
+  document.getElementById("cancionAcompanante").value="";
   // document.getElementById("bus").value = "";
   // document.getElementById("carne").checked = "";
   // document.getElementById("pescado").checked = "";

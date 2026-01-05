@@ -1409,6 +1409,11 @@ footer {
     
     @media (max-width: 768px) {
         .hero-content h1 { font-size: 3.5rem; }
+        .hero-content p {
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 1.2rem; 
+            letter-spacing: 3px;
+        }
         .hero-phrase-container {
             padding: 20px!important;
         }

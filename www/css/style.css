@@ -1390,7 +1390,9 @@ footer {
 
     .hero-content h1 {
       font-family: 'Imperial Script', cursive;
-      font-size: 5rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      font-size: 5rem; 
+      margin-bottom: 10px; 
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
     .hero-content p {
@@ -1409,7 +1411,7 @@ footer {
     }
     
     @media (max-width: 768px) {
-        .hero-content h1 { font-size: 3.5rem; }
+        .hero-content h1 { font-size: 3.9rem; }
         .hero-content p {
             font-family: 'Parkinsans', sans-serif;
             font-size: 1.2rem; 

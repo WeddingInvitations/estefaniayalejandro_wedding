@@ -25,9 +25,9 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
 
   let bebidaAlcoholica = "";
   if (!dri) {
-    bebidaAlcoholica = "Sin";
+    bebidaAlcoholica = "No";
   } else {
-    bebidaAlcoholica = "Con";
+    bebidaAlcoholica = "Si";
   }
 
   // Visualizacion principal, en caso de bloqueo, usara la de texto
@@ -75,9 +75,9 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
     });
   }
 
-  const email1 = "gaviradiazoscar@gmail.com"; // Cambiar estefaniagarciaperezdeguzman@gmail.com
+  const email1 = "estefaniagarciaperezdeguzman@gmail.com";
   // const email1 = "f14agui@gmail.com";
-  // const email2 = "alexcampillo10@gmail.com"; //alexcampillo10@gmail.com
+  const email2 = "alexcampillo10@gmail.com";
 
   // Crear el email para Brevo
   const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
@@ -87,7 +87,7 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
   };
   sendSmtpEmail.to = [
     {email: email1, name: "Estefanía y Alejandro"},
-    // {email: email2, name: "Estefanía y Alejandro"},
+    {email: email2, name: "Estefanía y Alejandro"},
   ];
   sendSmtpEmail.subject = "Nueva asistencia registrada";
   sendSmtpEmail.htmlContent = html;
@@ -148,9 +148,9 @@ exports.exportarInvitados = onRequest({cors: true}, async (req, res) => {
         "Teléfono": data.Teléfono || "",
         "Alergias": data.Alergias || "Sin alergias",
         "Canción": data.Cancion || "",
-        "Bebida": data.Bebida || "",
+        "Bebida alcoholica": data.Bebida? "SI" : "NO",
         // "Transporte": data.Bus ? "SÍ" : "NO",
-        "Tiene Acompañantes": data.Asistencia ? "SÍ" : "NO",
+        "Tiene Acompañantes": data.Asistencia ? "SI" : "NO",
         "Fecha Registro": data.timestamp ? new Date(data.timestamp).toLocaleDateString("es-ES") : "",
       };
 
@@ -167,7 +167,7 @@ exports.exportarInvitados = onRequest({cors: true}, async (req, res) => {
             "Teléfono": data.Teléfono || "", // Mismo teléfono que el principal
             "Alergias": acompanante.Alergias || "Sin alergias",
             "Canción": acompanante.Cancion || "",
-            "Transporte": acompanante.Alcohol,
+            "Bebida alcoholica": acompanante.Alcohol || "",
             "Tiene Acompañantes": "N/A",
             "Fecha Registro": data.timestamp ? new Date(data.timestamp).toLocaleDateString("es-ES") : "",
           };

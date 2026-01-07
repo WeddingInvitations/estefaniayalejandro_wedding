@@ -134,8 +134,8 @@ function addAcompanante() {
           </div>
           <div class="col-12 select_edad">
             <select class="typeDrink col-sm-12 col-lg-12 mb-3" name="tipo_bebida[]" id="tipo_bebida">
-              <option value="Con">¡Vamos a ello!</option>
-              <option value="Sin">Sin alcohol, gracias</option>
+              <option value="Si">¡Vamos a ello!</option>
+              <option value="No">Sin alcohol, gracias</option>
             </select>
           </div>
           <button type="button" id="deleteAcompananteButton">Borrar Acompañante</button>

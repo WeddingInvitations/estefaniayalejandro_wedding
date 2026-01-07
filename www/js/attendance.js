@@ -296,9 +296,6 @@ document.getElementById('attendance-form').addEventListener("submit", function (
   document.getElementById("cancion").value = "";
   document.getElementById("bebidaSi").checked = "";
   document.getElementById("bebidaNo").checked = "";
-  document.getElementById("nombreAcompanante").value="";
-  document.getElementById("alergiasAcompanante").value="";
-  document.getElementById("cancionAcompanante").value="";
   // document.getElementById("bus").value = "";
   // document.getElementById("carne").checked = "";
   // document.getElementById("pescado").checked = "";

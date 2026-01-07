@@ -35,14 +35,14 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
   text += `Teléfono:${ph}\n`;
   text += `Alergias:${ale}\n`;
   text += `Canción: ${song}\n\n`;
-  text += `Bebida: ${bus}\n\n`;
+  text += `Bebida alcoholica: ${dri}\n\n`;
 
 
   if (!att) {
     text += "Acompañantes: No voy acompañado\n";
     html += "<strong>Acompañantes:</strong> No voy acompañado<br>";
   } else {
-    const edadMenor = acompanante.Edad? acompanante.Edad : "";
+    const edadMenor = gue.Edad? gue.Edad : "";
     html += "<strong>Acompañantes:</strong><br><ul>";
     gue.forEach((acompanante, index) => {
       html += `<li>Acompañante ${index + 1}:`;
@@ -67,7 +67,7 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
     });
   }
 
-  const email1 = "estefaniagarciaperezdeguzman@gmail.com"; // Cambiar estefaniagarciaperezdeguzman@gmail.com
+  const email1 = "gaviradiazoscar@gmail.com"; // Cambiar estefaniagarciaperezdeguzman@gmail.com
   // const email1 = "f14agui@gmail.com";
   // const email2 = "alexcampillo10@gmail.com"; //alexcampillo10@gmail.com
 
@@ -79,7 +79,7 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
   };
   sendSmtpEmail.to = [
     {email: email1, name: "Estefanía y Alejandro"},
-   // {email: email2, name: "Estefanía y Alejandro"},
+    // {email: email2, name: "Estefanía y Alejandro"},
   ];
   sendSmtpEmail.subject = "Nueva asistencia registrada";
   sendSmtpEmail.htmlContent = html;

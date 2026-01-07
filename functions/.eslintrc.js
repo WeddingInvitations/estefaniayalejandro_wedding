@@ -22,7 +22,8 @@ module.exports = {
       env: {
         mocha: true,
       },
-      rules: {},
+      rules: {
+        "linebreak-style": 0},
     },
   ],
   globals: {},

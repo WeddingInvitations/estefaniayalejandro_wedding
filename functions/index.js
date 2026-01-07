@@ -23,32 +23,39 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
     return res.status(400).json({message: "Faltan datos obligatorios"});
   }
 
+  let bebidaAlcoholica = "";
+  if (!dri) {
+    bebidaAlcoholica = "Sin";
+  } else {
+    bebidaAlcoholica = "Con";
+  }
+
   // Visualizacion principal, en caso de bloqueo, usara la de texto
   let html = `<strong>Nombre:</strong> ${nm}<br>`;
   html += `<strong>Teléfono:</strong> ${ph}<br>`;
   html += `<strong>Alergias:</strong> ${ale}<br>`;
   html += `<strong>Canción:</strong> ${song}<br><br>`;
-  html += `<strong>Bebida alcoholica:</strong> ${dri}<br>`;
+  html += `<strong>Bebida alcoholica:</strong> ${bebidaAlcoholica}<br>`;
 
   // Fallback, por si acaso se bloquea la visualizacion html
   let text = `Nombre:${nm}\n`;
   text += `Teléfono:${ph}\n`;
   text += `Alergias:${ale}\n`;
   text += `Canción: ${song}\n\n`;
-  text += `Bebida alcoholica: ${dri}\n\n`;
+  text += `Bebida alcoholica: ${bebidaAlcoholica}\n\n`;
 
 
   if (!att) {
     text += "Acompañantes: No voy acompañado\n";
     html += "<strong>Acompañantes:</strong> No voy acompañado<br>";
   } else {
-    const edadMenor = gue.Edad? gue.Edad : "";
     html += "<strong>Acompañantes:</strong><br><ul>";
     gue.forEach((acompanante, index) => {
+      const edadMenor = acompanante.Edad ? ` - Edad: ${acompanante.Edad}` : "";
       html += `<li>Acompañante ${index + 1}:`;
       html += `<ul>`;
       html += `<li>Nombre: ${acompanante.Nombre}</li>`;
-      html += `<li>Tipo: ${acompanante.TipoInvitado} - ${edadMenor}</li>`;
+      html += `<li>Tipo: ${acompanante.TipoInvitado}${edadMenor}</li>`;
       html += `<li>Alergias: ${acompanante.Alergias}</li>`;
       html += `<li>Cancion: ${acompanante.Cancion}</li>`;
       html += `<li>Bebida alcoholica: ${acompanante.Alcohol}</li>`;
@@ -58,9 +65,10 @@ exports.enviarEmail = onRequest({cors: true}, async (req, res) => {
 
     text += "Acompañantes:\n";
     gue.forEach((acompanante, index) => {
+      const edadMenor = acompanante.Edad ? ` - Edad: ${acompanante.Edad}` : "";
       text += `--- Acompañante ${index + 1} ---\n`;
       text += `* Nombre: ${acompanante.Nombre}\n`;
-      text += `* Tipo: ${acompanante.TipoInvitado} - ${edadMenor}\n`;
+      text += `* Tipo: ${acompanante.TipoInvitado}${edadMenor}\n`;
       text += `* Alergias: ${acompanante.Alergias}\n`;
       text += `* Cancion: ${acompanante.Cancion}\n`;
       text += `* Bebida alcoholica: ${acompanante.Alcohol}\n\n`;

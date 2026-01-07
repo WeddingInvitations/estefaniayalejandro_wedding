@@ -1156,7 +1156,7 @@ button#addAcompananteButton:hover,
 button#guardarButton:hover,
 button#deleteAcompananteButton:hover,
 button#descargar_app:hover {
-    background-color: transparent;
+    background-color: white;
     /* Azul más oscuro para hover */
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     /* Intensifica la sombra */

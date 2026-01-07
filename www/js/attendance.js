@@ -240,7 +240,7 @@ document.getElementById('attendance-form').addEventListener("submit", function (
         Edad: acompananteElement.querySelector(".edad").value,
         Alergias: acompananteElement.querySelector(".allergies").value,
         Cancion: acompananteElement.querySelector(".cancion").value,
-        Alcohol: acompananteElement.querySelector("typeDrink").value
+        Alcohol: acompananteElement.querySelector(".typeDrink").value
         // Bus: busAcomp
       };
 

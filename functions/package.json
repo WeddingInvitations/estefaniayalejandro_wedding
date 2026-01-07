@@ -1,6 +1,6 @@
 {
   "name": "functions",
-  "description": "Cloud Functions for estefaniayalejandro_wedding",
+  "description": "Cloud Functions for ainarayborja_wedding",
   "scripts": {
     "lint": "eslint .",
     "serve": "firebase emulators:start --only functions",

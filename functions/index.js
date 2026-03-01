@@ -162,7 +162,7 @@ exports.exportarInvitados = onRequest({cors: true}, async (req, res) => {
           const acompananteData = {
             "Nº": numeroFila++,
             "ID Documento": doc.id,
-            "Tipo": `Acompañante ${index + 1}`,
+            "Tipo": `Acompañante ${index + 1} - ${acompanante.TipoInvitado}`,
             "Nombre": acompanante.Nombre || "",
             "Teléfono": data.Teléfono || "", // Mismo teléfono que el principal
             "Alergias": acompanante.Alergias || "Sin alergias",
@@ -187,11 +187,11 @@ exports.exportarInvitados = onRequest({cors: true}, async (req, res) => {
     const columnWidths = [
       {wch: 5}, // Nº
       {wch: 20}, // ID Documento
-      {wch: 15}, // Tipo
+      {wch: 20}, // Tipo
       {wch: 25}, // Nombre
       {wch: 15}, // Teléfono
       {wch: 20}, // Alergias
-      {wch: 25}, // Cancion
+      {wch: 35}, // Cancion
       {wch: 15}, // Bebida
       // {wch: 12}, // Transporte
       {wch: 18}, // Tiene Acompañantes
